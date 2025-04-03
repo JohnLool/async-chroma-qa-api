@@ -7,10 +7,15 @@ from langchain_chroma import Chroma
 import os
 import shutil
 
+from app.config import settings
 
-CHROMA_PATH = "chroma"
+
+CHROMA_PATH = settings.CHROMA_PATH
 DATA_PATH = "data"
 
+#
+# Run only if you want to create new ChromaDB with your data!
+#
 
 def main():
     generate_data_store()
