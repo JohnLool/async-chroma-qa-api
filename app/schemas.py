@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, StringConstraints
-from typing import Annotated
+from typing import Annotated, Optional
 
 
 class QuestionRequest(BaseModel):
@@ -9,4 +9,4 @@ class QuestionRequest(BaseModel):
 
 class QuestionResponse(BaseModel):
     answer: str
-    sources: list[str]
+    sources: Optional[list[str]] = []

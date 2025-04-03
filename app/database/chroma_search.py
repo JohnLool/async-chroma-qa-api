@@ -24,16 +24,19 @@ class ChromaSearch:
             embedding_function=self.embeddings
         )
 
-    async def search(self, question: str, k=4, threshold=0.7):
+    async def search(self, query: str, k=4, threshold=0.7):
         try:
             loop = asyncio.get_event_loop()
+            print(f"Searching for: {query}")  # Логируем запрос
+
             results = await loop.run_in_executor(
                 None,
-                lambda: self.db.similarity_search_with_relevance_scores(question, k=k)
+                lambda: self.db.similarity_search_with_relevance_scores(query, k=k)
             )
 
             filtered = [res for res in results if res[-1] >= threshold]
+
             return filtered or None
         except Exception as e:
-            print(f"Search error: {str(e)}")
+            print(f"Search error: {str(e)}")  # Логируем ошибки
             raise
