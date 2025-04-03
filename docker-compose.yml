@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: rag_api
+    restart: unless-stopped
+    environment:
+      - CHROMA_PATH=./app/database/chroma
+    volumes:
+      - /root/chroma_db/chroma:/app/app/database/chroma
+    networks:
+      - rag-network
+
+networks:
+  rag-bot-network:
+    external: true
