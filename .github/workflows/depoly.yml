@@ -21,7 +21,7 @@ jobs:
       - name: Deployment
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
-            cd devops-dashboard
+            cd async-chroma-qa-api
             git pull origin main
             docker-compose -f docker-compose.yml down
             docker-compose -f docker-compose.yml up -d --build --remove-orphans
