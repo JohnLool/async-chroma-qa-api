@@ -10,7 +10,7 @@ services:
     volumes:
       - /root/chroma_db/chroma:/app/app/database/chroma
     networks:
-      - rag-network
+      - rag-bot-network
 
 networks:
   rag-bot-network:
